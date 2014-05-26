@@ -1,0 +1,10 @@
+*.suo
+*.user
+TestResult.xml
+*.VisualState.xml
+~$*
+Debug
+Release
+obj
+bin
+packages

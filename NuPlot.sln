@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuPlot", "NuPlot\NuPlot.csproj", "{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuPlot.Tests", "NuPlot.Tests\NuPlot.Tests.csproj", "{B399388C-F6F7-41A2-882C-1AB7369BB30E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuPlot.Demo", "NuPlot.Demo\NuPlot.Demo.csproj", "{C6A0277D-639F-40E2-8CF5-B4654746BDB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8AB41B46-639E-4E7C-AE31-520B9238BCBB}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Debug|x86.ActiveCfg = Debug|x86
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Debug|x86.Build.0 = Debug|x86
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Release|x86.ActiveCfg = Release|x86
+		{ECAFAFEA-123F-4F00-8243-B310AE35D5A0}.Release|x86.Build.0 = Release|x86
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Debug|x86.ActiveCfg = Debug|x86
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Debug|x86.Build.0 = Debug|x86
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Release|x86.ActiveCfg = Release|x86
+		{B399388C-F6F7-41A2-882C-1AB7369BB30E}.Release|x86.Build.0 = Release|x86
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Debug|x86.ActiveCfg = Debug|x86
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Debug|x86.Build.0 = Debug|x86
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Release|x86.ActiveCfg = Release|x86
+		{C6A0277D-639F-40E2-8CF5-B4654746BDB0}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
