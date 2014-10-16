@@ -128,6 +128,13 @@ namespace NuPlot
         /// </summary>
         private static IEnumerable<WorldPoint> GetPoints(IEnumerable items, Type elementType, string xValuePath, string yValuePath)
         {
+            if (elementType == typeof(int) ||
+                elementType == typeof(float) ||
+                elementType == typeof(double))
+            {
+                return Meh(items);
+            }
+
             var xGetter = CreateGetter(elementType, xValuePath);
             var yGetter = CreateGetter(elementType, yValuePath);
             if (xGetter != null && yGetter != null)
@@ -137,6 +144,16 @@ namespace NuPlot
             else
             {
                 return new WorldPoint[] { };
+            }
+        }
+
+        private static IEnumerable<WorldPoint> Meh(IEnumerable items)
+        {
+            int x = 0;
+            foreach (var o in items)
+            {
+                yield return new WorldPoint(x, o);
+                x++;
             }
         }
 

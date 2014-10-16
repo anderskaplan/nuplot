@@ -106,7 +106,7 @@ namespace NuPlot
 
                 if (XAxis.ShouldFitRangeToData || YAxis.ShouldFitRangeToData)
                 {
-                    Trace.WriteLine(string.Format("Plot '{0}': FitAxisRangesToData.", Name));
+                    //Trace.WriteLine(string.Format("Plot '{0}': FitAxisRangesToData.", Name));
                     XAxis.StartFittingRangeToData();
                     YAxis.StartFittingRangeToData();
                     foreach (var plot in _plots)
@@ -172,7 +172,7 @@ namespace NuPlot
         {
             if (_suppressEvents) return;
 
-            Trace.WriteLine(string.Format("Plot '{0}': received Axis_RangeChanged event.", Name));
+            //Trace.WriteLine(string.Format("Plot '{0}': received Axis_RangeChanged event.", Name));
             ResetView();
         }
 
@@ -180,7 +180,7 @@ namespace NuPlot
         {
             if (_suppressEvents) return;
 
-            Trace.WriteLine(string.Format("Plot '{0}': received Plot_DataChanged event.", Name));
+            //Trace.WriteLine(string.Format("Plot '{0}': received Plot_DataChanged event.", Name));
             ResetView();
         }
 

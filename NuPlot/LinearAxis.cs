@@ -212,13 +212,13 @@ namespace NuPlot
 
             if (_actualMin != _oldMin || _actualMax != _oldMax)
             {
-                Trace.WriteLine(string.Format("Fit-range-to-data operation changed the range to {0} .. {1}.", _actualMin, _actualMax));
+                //Trace.WriteLine(string.Format("Fit-range-to-data operation changed the range to {0} .. {1}.", _actualMin, _actualMax));
                 OnRangeChanged();
                 return true;
             }
             else
             {
-                Trace.WriteLine("Fit-range-to-data operation caused no change.");
+                //Trace.WriteLine("Fit-range-to-data operation caused no change.");
                 return false;
             }
         }

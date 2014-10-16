@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using System.Globalization;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Threading;
+using System.Windows;
 
 namespace NuPlot.Demo
 {
@@ -26,6 +18,8 @@ namespace NuPlot.Demo
             DependencyProperty.Register("DynamicTimeScale", typeof(int), typeof(MainWindow), new PropertyMetadata(49));
 
         private Random _random = new Random();
+        private List<int> _live = new List<int>();
+        private Timer _timer;
 
         public MainWindow()
         {
@@ -33,9 +27,37 @@ namespace NuPlot.Demo
 
             DependencyPropertyDescriptor.FromProperty(DynamicTimeScaleProperty, typeof(MainWindow)).AddValueChanged(this, (s, e) =>
             {
-                System.Diagnostics.Trace.WriteLine(string.Format("DynamicTimeScale changed to {0}.", DynamicTimeScale));
+                Trace.WriteLine(string.Format("DynamicTimeScale changed to {0}.", DynamicTimeScale));
                 OnPropertyChanged("DynamicTimeScaleData");
             });
+
+            Loaded += (s, e) =>
+                {
+                    _timer = new Timer(new TimerCallback(_ =>
+                    {
+                        _live.Add(_live.Count);
+
+                        //Dispatcher.BeginInvoke(new Action(() =>
+                        //{
+                            var handler = PropertyChanged;
+                            if (handler != null)
+                            {
+                                handler(this, new PropertyChangedEventArgs("Live"));
+                            }
+                        //}));
+
+                    }), null, 1000, 1000);
+                };
+
+            Unloaded += (s, e) =>
+                {
+                    _timer.Dispose();
+                };
+        }
+
+        public IList<int> Live
+        {
+            get { return _live; }
         }
 
         public int DynamicTimeScale

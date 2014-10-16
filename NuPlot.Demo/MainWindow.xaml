@@ -19,6 +19,13 @@
     </Window.Resources>
     <Grid>
         <TabControl>
+            <!-- Live plot -->
+            <TabItem Header="Live">
+                <nu:Plot DataContext="{Binding ElementName=_self}">
+                    <nu:PointPlot MarkerFill="Blue" ItemsSource="{Binding Live}" />
+                </nu:Plot>
+            </TabItem>
+            
             <!-- Point plot with automatic axes, data of type Point[] bound to a property. -->
             <TabItem Header="Sinc">
                 <nu:Plot DataContext="{Binding ElementName=_self}">

@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace NuPlot
 {
     /// <summary>
     /// Base class for plots.
     /// </summary>
-    public abstract class PlotBase : PlotCanvas
+    public abstract class PlotBase : PlotCanvas, IWeakEventListener
     {
         #region Dependency properties
 
@@ -36,6 +38,13 @@ namespace NuPlot
         protected PlotBase(bool useCustomVisualsHandling)
             : base(useCustomVisualsHandling)
         {
+            //var itemsSourceDescriptor = DependencyPropertyDescriptor.FromProperty(ItemsSourceProperty);
+            //itemsSourceDescriptor.AddValueChanged()
+
+            //TargetUpdated += (s, e) =>
+            //    {
+            //        Console.WriteLine("meh");
+            //    };
         }
 
         /// <summary>
@@ -155,9 +164,27 @@ namespace NuPlot
 
             if (e.Property == ItemsSourceProperty)
             {
+                var expression = GetBindingExpression(ItemsSourceProperty);
+                if (expression != null)
+                {
+                    var propertyName = string.Empty;
+                    var binding = expression.ParentBinding;
+                    if (binding.Path != null && binding.Path.Path != null)
+                    {
+                        propertyName = binding.Path.Path;
+                    }
+
+                    var notificationSource = expression.DataItem as INotifyPropertyChanged;
+                    if (notificationSource != null)
+                    {
+                        PropertyChangedEventManager.AddListener(notificationSource, this, propertyName);
+                    }
+                }
+
                 OnDataChanged();
             }
-            else if (e.Property == FrameworkElement.ActualWidthProperty || e.Property == FrameworkElement.ActualHeightProperty)
+            else if (e.Property == FrameworkElement.ActualWidthProperty ||
+                e.Property == FrameworkElement.ActualHeightProperty)
             {
                 OnActualSizeChanged();
             }
@@ -189,6 +216,18 @@ namespace NuPlot
         {
             var handler = AppearanceChanged;
             if (handler != null) handler(this, EventArgs.Empty);
+        }
+
+        public bool ReceiveWeakEvent(Type managerType, object sender, EventArgs e)
+        {
+            if (!Dispatcher.CheckAccess())
+            {
+                return (bool)Dispatcher.Invoke(new Func<bool>(() => ReceiveWeakEvent(managerType, sender, e)));
+            }
+
+            Debug.Assert(Dispatcher.CheckAccess());
+            OnDataChanged();
+            return true;
         }
     }
 }
